@@ -1,2 +1,2 @@
 git is a wonderful tool
-git is free!
+qiuke loves xiaomao
