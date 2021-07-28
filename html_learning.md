@@ -75,7 +75,7 @@
 
 ## day2
 
-### 表格标签
+### 1.表格标签
 
 ```html
 <table>
@@ -83,7 +83,7 @@
         <th>表头1</th>
         <th>表头2</th>
         <th>表头3</th>
-        <!---一般用th是对表头进行加粗，td也行，代表数据单元格--->
+        <!--一般用th是对表头进行加粗，td也行，代表数据单元格-->
     </tr>
     <tr>
         <td>meta1</td>
@@ -124,23 +124,424 @@ td: table data  可以是其他内容，不仅限于文字
 
 
 
-### 列表标签
+### 2.列表标签
 
-#### 无序列表
+#### 2.1 无序列表（important）
 
 ​	unordered list
 
 ```html
 <ul>
-    
+    <li>item1</li>
+    <li>item2</li>
+    <li>item3</li>
 </ul>
+```
+
+item 不限类型
+
+**实际使用时，通过CSS设定属性**
+
+#### 2.2 有序列表
+
+ordered list	
+
+```html
+<ol>
+    <li>list1</li>
+    <li>list2</li>
+    <li>list3</li>
+</ol>
+```
+
+**样式通过CSS实现**
+
+#### 2.3 自定义列表
+
+definite list
+
+```html
+<dl>
+    <dt>名词1</dt>
+    <dd>explain1</dd>
+    <dd>explain2</dd>
+    <dd>..</dd>
+</dl>
+```
+
+**< dt> ，< dd>的个数不限**
+
+
+
+< li> < dd> < dt> 可以放任何标签
+
+###  3.表单标签
+
+> 用户填写表单，搜集用户信息
+
+- 表单域 ：   表单元素信息区域 < form>
+- 表单控件 ： 填写内容处
+- 提示信息 ： 姓名、性别等提示信息
+
+#### 3.1 表单域
+
+```html
+<form action="demo.php" method="POST" name="name_1" >
+    
+</form>
+```
+
+#### 3.2 表单控件
+
+- < input type="text">
+
+  属性：
+
+  ![input输入类型](C:\Users\邱珂\AppData\Roaming\Typora\typora-user-images\image-20210727194942781.png)
+
+- name : 定义input元素名称。**单选按钮和复选框要有相同的name值**
+
+- value: 规定input的元素值 
+
+  > **name & value 后台人员使用**
+
+- checked  规定input元素首次加载时应被选中
+
+​      单选按钮和复选框可以设置默认值 checked="checked"
+
+- maxlength  规定输入字段中字符的最大长度
+
+- submit   < input type="submit" value="免费注册">   将form的信息提交到后台服务器
+- reset  恢复默认值
+
+- button  定义可点击按钮（常与JS配合使用）
+- file  上传文件 < input type="file" value="提交文件">
+
+#### 3.3 表单label标签
+
+```html
+<label for="man">男 </label> <input type="radio"  value="man" id="man">
 ```
 
 
 
+#### 3.4 下拉表单标签
+
+```html
+<select>
+    <option selected="selected">选项1</option>
+    <option>选项2</option>
+    <option>选项3</option>
+    <option>选项4</option>
+</select>
+```
+
+#### 3.5文本域表单元素
+
+textarea 输入内容较多的情况下
+
+```html
+<form>
+    
+<textarea>
+  请输入文字
+</textarea>
+ </form>
+```
+
+## day3
+
+### 1.1 CSS语法
+
+- 选择器用于指定CSS的html标签，花括号内设置具体样式
+- 属性和属性值以**键值对**的形式出现
+- 属性是对指定对象设置样式属性，如字体大小、文本颜色等
+- css定义一般在html的头部，与结构body分开，定义在<style>里面
+
+```html
+<head>
+    <style>
+        p {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+```
+
+### 1.2 CSS代码风格
+
+- 展开格式
+
+```html
+h3 {
+   color: pink;
+   font-size: 20px;
+}
+```
+
+- 推荐用小写字母写style
+- 冒号后面保留空格
+- 选择器和{}保留空格
+
+### 1.3 选择器分类
+
+#### 1.3.1 基础选择器
+
+- 标签选择器
+
+>  p {color :red;
+>
+> ​      font-size: 12px;
+>
+> }
+
+- 类选择器  
+
+>  样式**点**定义 
+>
+>  结构**类**(class)调用  
+>
+>  一个或多个
+>
+>  开发最常用 
+
+```html
+<style>
+    .definite_name {
+        color: red;
+        font-size: 25px;
+    }
+</style>
+.
+.
+<div class="definite_name">
+    
+</div>
+```
+
+- **多类名**
+
+```
+  class="red font35"
+```
+
+**存在相同部分的放在同一个class里，多个类之间用空格隔开**
+
+- **id选择器**
+
+> 样式#定义
+>
+> 结构id调用
+>
+> 只能调用一次
+>
+> 别人切勿使用
+
+```
+#red {
+  color: red;
+}
+<p id="red";></P>
+```
+
+**id选择器一般用于页面唯一性的元素是，经常搭配JavaScript使用**
+
+- 通配符选择器
+
+```
+* {
+
+   color: red;
+
+}
+```
+
+把body在内**所有的**标签样式修改，**不需要调用**
+
+### 1.4font字体属性
+
+#### 1.4.1 字体种类
+
+```html
+body {font-family: 'mircrosoft YaHei',times,'times new roman';}
+```
+
+ 字体之间用'**逗号,**'隔开  一般写在body属性内
+
+#### 1.4.2 字体大小
+
+```
+p {font-size: 20px;}
+```
+
+>  **标题标签需要单独指定大小**
+
+#### 1.4.3字体粗细
+
+***学会查找CSS技术手册***
+
+- normal: 默认值 400
+- bold: 定义粗体 加粗 700
+- 100——900： 自定义大小  不接px
+
+> 通常用数字表示粗细
+
+#### 1.4.4 文字样式
+
+```
+p {font-style:  italic;}
+
+p {font-style: normal} 把倾斜字体变不倾斜
+```
 
 
 
+#### 1.4.5 复合属性
+
+```
+body {
+  font: font-style font-weight font-size/line-height font-family;
+}
+```
+
+e.g. 
+
+```
+ p {font: normal 700 16px 'microsoft yahei';}
+```
+
+- 其中 font-family  font-size **不可省略**
+
+- 各个属性必须按照**规定顺序**书写
+
+- 各属性之间用**空格**隔开
+
+### 1.5 文本属性
+
+#### 1.5.1文本颜色
+
+```
+color: pink;
+
+color: #ff0000;
+
+color: rgb(255,0,0);
+```
+
+常用16进制
+
+#### 1.5.2 对齐文本
+
+水平对齐方式
+
+```
+div{
+  text-aligh: center;
+}
+```
+
+  默认left  
+
+#### 1.5.3 装饰文本
+
+```
+div {
+  text-decoration: underline;
+}
+```
+
+- 默认 none
+- 下划线 underline
+- 上划线 overline
+- 删除线 line-through
+
+常用
+
+```
+<style>
+  a {text-decoration: none;}
+</style>
+```
+
+#### 1.5.4 文本缩进
+
+```
+div {text-indent: 20px;}
+
+div {text-indent: 2em;}  缩进当前字大小两个字的距离
+```
 
 
+
+#### 1.5.5 行间距
+
+```
+p {line-height: 26px;}
+```
+
+包括**上间距、文字高度、下间距**
+
+### 1.6 CSS的引入方式
+
+#### 1.6.1 内部样式表
+
+```html
+<style>
+    div {
+        color: red;
+        font-size: 12px;
+    }
+</style>
+```
+
+- 通常写在head标签中，理论上可在任何地方
+- 方便控制整个页面元素
+- 未实现结构样式分离
+
+#### 1.6.2 行内样式表
+
+```
+<p style="color: pink; font-size: 12px";>青春</p>
+```
+
+适用**简单**修改
+
+#### 1.6.3 外部样式表 (最常用)
+
+***样式单独写到CSS文件中，之后把CSS文件引入到HTML页面中使用***
+
+1. 新建.css的文件，把所有CSS代码放入此文件中
+2. 在HTML页面中，使用<link>标签引入css文件
+
+```
+<link rel="stylesheet" href="css文件路径"
+```
+
+**优点：控制多个页面**
+
+### 2.1 复合选择器
+
+#### 2.1.1 后代选择器
+
+```
+元素1 元素2 {样式声明}
+元素1里所有元素2的后代
+ul li {color: pink;}
+ol lo {color: green;}
+```
+
+可以选多级
+
+```
+ul li a {color: blue;}
+```
+
+#### 2.1.2 子选择器
+
+- 只选择"亲儿子" 所有直接后代(儿子)
+
+```
+div>p {color: red;}
+```
 
