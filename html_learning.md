@@ -45,6 +45,7 @@
 
 
 
+
 ### 4.具体标签
 
 #### 双标签
@@ -544,4 +545,113 @@ ul li a {color: blue;}
 ```
 div>p {color: red;}
 ```
+
+#### 2.1.3 并集选择器
+
+```html
+div, p {}  通过逗号,分隔
+```
+
+同时对div, p设置样式*（对多标签设置样式）*
+
+#### 2.1.4 伪类选择器
+
+```
+a:link {color: blue;} 未访问
+a:visited 已访问
+a:hover  指针指向
+a:active  按下但未弹起
+```
+
+- 按照*RVHA*的顺序  link-visited-hover-active
+- 需要给a单独指定样式
+
+```
+<style>
+  a {
+    color: gray;
+    text-decoration: none;
+  }
+  a:hover {
+    color: skyblue;
+    text-decoration: underline;
+  }
+  </style>
+```
+
+#### 2.1.5 focus伪类选择器
+
+- 一般为<input>类表单元素选取
+
+```
+input:focus {
+  color: blue;
+  background-color: pink;
+}
+```
+
+### 2.2 CSS元素显示模式 
+
+#### 2.2.1 块元素
+
+> **div**,h1,h6,p,ul,ol,li等
+
+- 独占一行
+- 高度、宽度、内外边距可控制
+- 宽度默认是容器（父级宽度）的100%
+- 是容器及盒子，里面可放行内元素或者块级元素
+
+ **文字类元素内不能使用块级元素，如p,h1~h6**
+
+#### 2.2.2 行内元素(内联元素)
+
+> a,strong,b,em,i,del,i,s,ins,u,**span**等
+
+- 一行可显示多个行内元素
+- 高、宽直接设置无效
+- 默认宽度是内容本身
+- 只能容纳文本或其他行内元素
+
+note:
+
+- **链接里面不能放链接**
+- **特殊情况链接<a>里可以放块级元素，但给a转换一下块级模式最安全**
+
+#### 2.2.3 行内块元素
+
+<img> <input> <td>
+
+同时具有块元素和行内元素的特点 ”行内块元素“
+
+### 2.3 模式转换
+
+```
+display: block; 转换为块
+display: inline; ——行内元素
+display: inline-block; 行内块
+```
+
+#### 2.3.1 垂直居中
+
+```
+line-height=height;
+```
+
+### 背景图片
+
+```
+background-image: url();
+```
+
+background-repeat: repeat|no-repeat|repeat-x|repeat-y
+
+##### 背景图片位置
+
+```
+background-position: x y;
+```
+
+- 可用方位名词  right center  left top bottom  只用一个，另一个则默认居中
+- 具体像素值   第一个一定是x轴， 第二个不写则默认居中
+- 可以混合单位，方位跟px混合
 
