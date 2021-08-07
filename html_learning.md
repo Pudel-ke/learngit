@@ -46,6 +46,9 @@
 
 
 
+
+
+
 ### 4.具体标签
 
 #### 双标签
@@ -639,6 +642,8 @@ line-height=height;
 
 ### 背景图片
 
+ **常见于logo，或者装饰性的小图片、超大背景图片**
+
 ```
 background-image: url();
 ```
@@ -654,4 +659,113 @@ background-position: x y;
 - 可用方位名词  right center  left top bottom  只用一个，另一个则默认居中
 - 具体像素值   第一个一定是x轴， 第二个不写则默认居中
 - 可以混合单位，方位跟px混合
+
+##### 背景图片悬停方式
+
+```
+baclground-attachment: scroll |  fixed
+```
+
+##### 复合写法 
+
+ (没有顺序要求 且各属性之间用空格隔开
+
+一般习惯  
+
+```
+background: color url() repeat fixed top ;
+```
+
+```
+background: rgba(0,0,0,0.3) url() repeat-x scroll top
+```
+
+###  3. CSS特性
+
+##### 层叠性
+
+- 样式冲突：就近原则，哪个样式离结构近，执行哪个样式
+- 样式不冲突： 不会层叠
+
+##### 继承性
+
+- 子标签继承父标签的属性
+
+  一般是text-   font-  line-  color等属性
+
+```html
+<style>
+    div {
+        color: pink;
+        font: 14px/1.5;
+    }
+   .test1 {
+        font-size: 16px;
+    }
+</style>
+<div>
+    <p class="test1">
+        p的行高是16*1.5=24px
+    </p>
+    <p>
+        这个P的行高是14*1.5=21px
+    </p>
+</div>
+```
+
+##### 优先级
+
+| 选择器             | 选择器权重 |
+| ------------------ | ---------- |
+| 继承或者*          | 0,0,0,0    |
+| 元素选择器         | 0,0,0,1    |
+| 类/伪类选择器      | 0,0,1,0    |
+| ID选择器           | 0,1,0,0    |
+| 行内样式(style="") | 1,0,0,0    |
+| !important 重要的  | ∞ 无穷大   |
+
+```
+color: pink!important;
+```
+
+---
+
+```html
+<head>
+    
+<style>
+    #father {
+        color: red;
+    }
+    p {
+        color: pink;
+    }
+</style>
+</head>
+<body>
+    <div id="father">
+        <p>
+            maomao yyds!
+        </p>
+    </div>   
+</body>
+```
+
+**maomaoyyds 颜色是粉色**
+
+因为p继承了父亲div属性，权重为0,0,0,0,因此考虑元素选择器权重为0，0，0，1，故为粉色
+
+不管父亲优先级多高，子标签优先级都为
+
+###### 权重叠加
+
+```
+li 权重 0,0,0,1
+ul li 权重 0,0,0,2
+.nav li  权重 0,0,1,0+0,0,0,1=0,0,1,1
+```
+
+**复合选择器 权重会有叠加 但不会进位**
+
+> 0,0,0,1+0,0,0,9=0，0,0,0,10 < 0,0,1,0
 
