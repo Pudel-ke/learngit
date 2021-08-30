@@ -1,2 +1,1 @@
-fight for future
-qiuke loves xiaomao
+第一次尝试写的个人博客
